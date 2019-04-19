@@ -18,3 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+Route::get('/Cart', 'CartController@index');
+Route::get('/Cart/add/{goods_id?}', 'CartController@add');
+
+
+Route::get('/Order/create', 'OrderController@create');
