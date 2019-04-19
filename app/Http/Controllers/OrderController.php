@@ -13,6 +13,6 @@ class OrderController extends Controller
 {
     //生成订单
     public function create(){
-        echo 'order_no: '.Order::generateOrderSN(Auth::id());die;
+        echo Order::orderno(Auth::id());die;
     }
 }
