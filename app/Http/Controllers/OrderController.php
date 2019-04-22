@@ -74,13 +74,13 @@ class OrderController extends Controller
         $response = [];
         if($info){
             //已支付
-            if($info->order_status>0){
+            if($info->pay_status>0){
                 $response = [
                     'status'    => 0,
                     'msg'       => 'ok'
                 ];
             }
-            var_dump($info->toArray());
+//            var_dump($info->toArray());
         }else{
             die("订单不存在");
         }

@@ -141,9 +141,8 @@ class WxPayController extends Controller
             $sign = true;
             if($sign){
                 //签名验证成功
-
                 $order_status = strtotime($xml->time_end);
-                Order::where(['order_no'=>$xml->out_trade_no])->update(['pay_amount'=>$xml->cash_fee,'order_status'=>$order_status]);
+                Order::where(['order_no'=>$xml->out_trade_no])->update(['pay_amount'=>$xml->cash_fee,'pay_status'=>$order_status]);
             }else{
                 echo '验签失败，IP: '.$_SERVER['REMOTE_ADDR'];
             }
