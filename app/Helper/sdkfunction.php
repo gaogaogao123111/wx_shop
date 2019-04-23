@@ -19,14 +19,17 @@ use Illuminate\Support\Facades\Redis;
 
 
     function sdkticket(){
-        $key = 'sdk_ticket';
-        $sdk_accesstoken = sdk_accesstoken();
-        $url = 'https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token='.$sdk_accesstoken.'&type=jsapi';
-        $ticketinfo = json_decode(file_get_contents($url),true);
-        if(isset($ticketinfo['ticket'])){
-            Redis::set($key,$ticketinfo['ticket']);
-            Redis::expire($key,3600);
+        $key='sdk_ticket';
+        $ticket = Redis::get($key);
+        if($ticket){
+            return $ticket;
         }else{
-            return false;
+            $access_token=sdk_accesstoken();
+            $url='https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token='.$access_token.'&type=jsapi';
+            $ticket_info = json_decode(file_get_contents($url),true);
+            Redis::set($key,$ticket_info['ticket']);
+            Redis::expire($key,3600);
+            $ticket = $ticket_info['ticket'];
         }
+        return $ticket;
     }

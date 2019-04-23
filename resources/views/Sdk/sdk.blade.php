@@ -9,11 +9,11 @@
 </head>
 <body>
 <button id="btn">选择照片</button>
-<hr>
+<br>
 <img src="" alt="" id="imgs1" width="300">
-<hr>
+<br>
 <img src="" alt="" id="imgs2"  width="300">
-<hr>
+<br>
 <img src="" alt="" id="imgs3"  width="300">
 <script src="/js/jquery/jquery-1.12.4.min.js"></script>
 <script src="http://res2.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
@@ -41,13 +41,14 @@
                         img +=v+',';
                         var node = "#imgs"+i;
                         $(node).attr('src',v);
-                        // console.log(node);
+                        console.log(node);
                         //上传图片接口
                         wx.uploadImage({
                             localId: v, // 需要上传的图片的本地ID，由chooseImage接口获得
                             isShowProgressTips: 1, // 默认为1，显示进度提示
                             success: function (msg) {
                                 var serverId = msg.serverId; // 返回图片的服务器端ID
+                                // alert(serverId);
                                 console.log(serverId);
                             }
                         });
@@ -55,6 +56,14 @@
 
 
                     //传值
+                    $.ajax({
+                        url : '/Sdk/img?img='+img,     //将上传的照片id发送给后端
+                        type: 'get',
+                        success:function(d){
+                            console.log(d);
+                        }
+                    });
+                    console.log(img);
                 }
             });
         });

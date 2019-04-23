@@ -46,3 +46,5 @@ Route::get('/Goods/cachegoods/{goods_id?}', 'GoodsdetailController@cachegoods');
 
 //sdk
 Route::get('/Sdk/sdk', 'SdkController@sdk');
+Route::get('/Sdk/img', 'SdkController@img');
+

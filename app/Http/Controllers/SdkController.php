@@ -31,4 +31,8 @@ class SdkController extends Controller
 
     }
 
+    public function img()
+    {
+        echo '<pre>';print_r($_GET);echo '</pre>';
+    }
 }
