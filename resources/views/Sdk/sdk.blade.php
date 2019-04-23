@@ -15,7 +15,6 @@
 <img src="" alt="" id="img2"  width="300">
 <hr>
 <img src="" alt="" id="img3"  width="300">
-
 <script src="/js/jquery/jquery-1.12.4.min.js"></script>
 <script src="http://res2.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
 <script>

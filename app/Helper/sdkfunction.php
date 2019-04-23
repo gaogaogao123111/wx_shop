@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Redis;
     }
 
 
-    function sdk_ticket(){
+    function sdkticket(){
         $key = 'sdk_ticket';
         $sdk_accesstoken = sdk_accesstoken();
         $url = 'https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token='.$sdk_accesstoken.'&type=jsapi';
