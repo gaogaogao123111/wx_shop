@@ -36,9 +36,9 @@
                 sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
                 sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
                 success: function (res) {
-                    var local = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                    var localIds  = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
                     var img = "";
-                    $.each(local,function(i,v){
+                    $.each(localIds ,function(i,v){
                         img +=v+',';
                         var node = "#imgs"+i;
                         $(node).attr('src',v);
@@ -49,8 +49,8 @@
                             isShowProgressTips: 1, // 默认为1，显示进度提示
                             success: function (msg) {
                                 var serverId = msg.serverId; // 返回图片的服务器端ID
-                                // alert(serverId);
-                                console.log(serverId);
+                                alert('id:::::'+serverId);
+                                // console.log(serverId);
                             }
                         });
                     })
@@ -61,10 +61,10 @@
                         url : '/Sdk/img?img='+img,     //将上传的照片id发送给后端
                         type: 'get',
                         success:function(d){
-                            console.log(d);
+                            // console.log(d);
                         }
                     });
-                    console.log(img);
+                    // console.log(img);
                 }
             });
         });
