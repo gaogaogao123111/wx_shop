@@ -9,7 +9,6 @@ class SdkController extends Controller
     public function sdk(){
 //        print_r($_SERVER);die;
         $noncestr = Str::random(10); //随机
-        var_dump($noncestr);
         $ticket = sdkticket(); //获取微信
         $timestamp = time(); //当前时间
         $current_url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] .$_SERVER['REQUEST_URI'];
