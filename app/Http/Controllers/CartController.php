@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 class CartController extends Controller
 {
+    //购物车列表
     public function index(){
         $cart_list = Cart::where(['user_id'=>Auth::id(),'session_id'=>Session::getId()])->get()->toArray();
         if($cart_list){
@@ -18,17 +19,19 @@ class CartController extends Controller
                 $self_price +=$g['self_price'];
                 $goods_list[]= $g;
             }
-            //展示
+
             $data = [
                 'goods_list'=>$goods_list,
                 'self_price' =>$self_price
             ];
+            //展示
             return view('Cart/Index',$data);
         }else{
             header('Refresh:3;url=/');
             die("购物车为空,跳转至首页");
         }
     }
+    //购物车添加
     public function add($goods_id=0){
         if(empty($goods_id)){
             header('Refresh:3;url=/Cart');

@@ -33,3 +33,16 @@ Route::get('/Weixin/notify', 'Weixin\WxPayController@notify');      //支付通�
 
 
 Route::get('/Weixin/paysuccess', 'Weixin\WxPayController@paysuccess');      //支付成功
+
+
+
+
+Route::get('/Goods/detail/{goods_id?}', 'GoodsdetailController@detail');//商品详情   排行
+Route::get('/Goods/getsort', 'GoodsdetailController@getsort');//排行实例
+Route::get('/Goods/cachegoods/{goods_id?}', 'GoodsdetailController@cachegoods');
+
+
+
+
+//sdk
+Route::get('/Sdk/sdk', 'SdkController@sdk');

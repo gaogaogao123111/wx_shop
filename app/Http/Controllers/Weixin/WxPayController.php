@@ -141,10 +141,10 @@ class WxPayController extends Controller
             $sign = true;
             if($sign){
                 //签名验证成功
-                $order_status = strtotime($xml->time_end);
-                Order::where(['order_no'=>$xml->out_trade_no])->update(['pay_amount'=>$xml->cash_fee,'pay_status'=>$order_status]);
+                $pay_status = strtotime($xml->time_end);
+                Order::where(['order_no'=>$xml->out_trade_no])->update(['pay_status'=>$pay_status]);
             }else{
-                echo '验签失败，IP: '.$_SERVER['REMOTE_ADDR'];
+                echo '验签失败'.$_SERVER['REMOTE_ADDR'];
             }
         }
         $response = '<xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[OK]]></return_msg></xml>';
@@ -153,6 +153,6 @@ class WxPayController extends Controller
     public function paysuccess()
     {
         $order_id = $_GET['order_id'];
-        echo 'OID: '.$order_id . "支付成功";
+        echo '订单id: '.$order_id . "支付成功";
     }
 }
