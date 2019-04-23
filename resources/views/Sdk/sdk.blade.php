@@ -49,8 +49,16 @@
                             isShowProgressTips: 1, // 默认为1，显示进度提示
                             success: function (msg) {
                                 var serverId = msg.serverId; // 返回图片的服务器端ID
-                                alert('id:::::'+serverId);
+                                alert('aid:::::'+serverId);
                                 // console.log(serverId);
+                            }
+                        });
+                        wx.downloadImage({
+                            serverId: v, // 需要下载的图片的服务器端ID，由uploadImage接口获得
+                            isShowProgressTips: 1, // 默认为1，显示进度提示
+                            success: function (arr) {
+                                var localId = arr.localId; // 返回图片下载后的本地ID
+                                alert('bid:::::'+serverId);
                             }
                         });
                     })
