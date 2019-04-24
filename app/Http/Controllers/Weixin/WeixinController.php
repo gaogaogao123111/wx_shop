@@ -122,11 +122,11 @@ class WeixinController extends Controller
             echo "回来啦";
         }else{
             $aa_info = [
-                'openid' => $aa['openid'],
-                'nickname' => $aa['nickname'],
-                'sex' => $aa['sex'],
-                'headimgurl' => $aa['headimgurl'],
-                'subscribe_time' => $aa['subscribe_time'],
+                'openid' => $res['openid'],
+                'nickname' => $res['nickname'],
+                'sex' => $res['sex'],
+                'headimgurl' => $res['headimgurl'],
+                'subscribe_time' => $res['subscribe_time'],
             ];
             Weixin::insertGetId($aa_info);
             echo "你好你好你好我是领导你是....";
