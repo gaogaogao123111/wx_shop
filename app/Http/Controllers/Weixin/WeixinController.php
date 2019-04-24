@@ -68,7 +68,7 @@ class WeixinController extends Controller
                               <Title><![CDATA['.$v->goods_name.']]></Title>
                               <Description><![CDATA['.$v->goods_desc.']]></Description>
                               <PicUrl><![CDATA['.'http://1809gaoxiangdong.comcto.com/uploads/goodsImg/20190220/3a7b8dea4c6c14b2aa0990a2a2f0388e.jpg'.']]></PicUrl>
-                              <Url><![CDATA['.'http://1809gaoxiangdong.comcto.com/Goods/detail/goods_id='.$v->goods_id.']]></Url>
+                              <Url><![CDATA['.'http://1809gaoxiangdong.comcto.com/Goods/detail/'.$v->goods_id.']]></Url>
                             </item>
                           </Articles>
                         </xml>';
