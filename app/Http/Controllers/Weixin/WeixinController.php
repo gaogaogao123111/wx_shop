@@ -118,7 +118,19 @@ class WeixinController extends Controller
         $urll = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token.'&openid='.$openid.'&lang=zh_CN';
         $response_user = json_decode(file_get_contents($urll),true);
         $res =Weixin::where(['openid'=>$response_user['openid']])->first();
-        var_dump($res);
+        if($res){
+            echo "回来啦";
+        }else{
+            $aa_info = [
+                'openid' => $aa['openid'],
+                'nickname' => $aa['nickname'],
+                'sex' => $aa['sex'],
+                'headimgurl' => $aa['headimgurl'],
+                'subscribe_time' => $aa['subscribe_time'],
+            ];
+            Weixin::insertGetId($aa_info);
+            echo "你好你好你好我是领导你是....";
+        }
 
     }
 }
