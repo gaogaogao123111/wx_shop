@@ -68,7 +68,7 @@ class WeixinController extends Controller
              echo  '<xml>
                           <ToUserName><![CDATA['.$openid.']]></ToUserName>
                           <FromUserName><![CDATA['.$wxid.']]></FromUserName>
-                          <CreateTime>.time().</CreateTime>
+                          <CreateTime>'.time().'</CreateTime>
                           <MsgType><![CDATA[news]]></MsgType>
                           <ArticleCount>1</ArticleCount>
                           <Articles>
@@ -84,7 +84,7 @@ class WeixinController extends Controller
         $data = [
             'jsconfig'  => $jsconfig
         ];
-        return view('Goods.goodsdetail',$data);
+        return view('Goods.goodsaaa',$data);
 
 
     }
