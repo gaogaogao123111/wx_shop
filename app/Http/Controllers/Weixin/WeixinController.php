@@ -57,9 +57,6 @@ class WeixinController extends Controller
             }
         }else if($content=='最新商品'){
             $v = DB::table('shop_goods')->orderBy('create_time','desc')->first();
-            $picurl = "http://shop.comcto.com/img/12.jpg";//图片绝对地址
-            $url = 'http://1809gaoxiangdong.comcto.com/Goods/detail/'.$v->goods_id;//点击跳转地址
-            $item_str = sprintf($content, $picurl,$url);
              $xmlTpl = "<xml>
                <ToUserName><![CDATA[$wxid]]></ToUserName>
                <FromUserName><![CDATA[$openid]]></FromUserName>
@@ -68,10 +65,10 @@ class WeixinController extends Controller
                <ArticleCount>1</ArticleCount>
                <Articles>
                                 <item>
-                       <Title><![CDATA[$v->goods_name]]></Title>
-                       <Description><![CDATA[$v->goods_desc]]></Description>
-                       <PicUrl><![CDATA[$picurl]]></PicUrl>
-                       <Url><![CDATA[$url]]></Url>
+                       <Title><![CDATA['.$v->goods_name.']]></Title>
+                       <Description><![CDATA['.$v->goods_desc.']]></Description>
+                       <PicUrl><![CDATA['.http://shop.comcto.com/img/12.jpg.']]></PicUrl>
+                       <Url><![CDATA['.'http://1809gaoxiangdong.comcto.com/Goods/detail/'.$v->goods_id.']]></Url>
                         </item>
                         </Articles>
                 </xml>";
