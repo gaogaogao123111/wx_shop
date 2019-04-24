@@ -58,16 +58,16 @@ class WeixinController extends Controller
         }else if($content=='最新商品'){
             $v = DB::table('shop_goods')->orderBy('create_time','desc')->first();
              $xmlTpl = "<xml>
-               <ToUserName><![CDATA[$wxid]]></ToUserName>
-               <FromUserName><![CDATA[$openid]]></FromUserName>
-               <CreateTime>time()</CreateTime>
+               <ToUserName><![CDATA['.$wxid.']]></ToUserName>
+               <FromUserName><!['.CDATA[$openid.']]></FromUserName>
+               <CreateTime>'.time().'</CreateTime>
                <MsgType><![CDATA[news]]></MsgType>
                <ArticleCount>1</ArticleCount>
                <Articles>
                                 <item>
                        <Title><![CDATA['.$v->goods_name.']]></Title>
                        <Description><![CDATA['.$v->goods_desc.']]></Description>
-                       <PicUrl><![CDATA['.http://shop.comcto.com/img/12.jpg.']]></PicUrl>
+                       <PicUrl><![CDATA['.'http://shop.comcto.com/img/12.jpg'.']]></PicUrl>
                        <Url><![CDATA['.'http://1809gaoxiangdong.comcto.com/Goods/detail/'.$v->goods_id.']]></Url>
                         </item>
                         </Articles>
