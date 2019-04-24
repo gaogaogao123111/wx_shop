@@ -26,7 +26,7 @@ class WeixinController extends Controller
         $jsconfig = [
             'appId' => env('WX_APPID'), //公众号ID
             'timestamp' => $timestamp,
-            'nonceStr' => $noncestr,   //随机字符串
+            'nonceStr' => $nonceStr,   //随机字符串
             'signature' => $string,    //签名
         ];
         $content = file_get_contents("php://input");
