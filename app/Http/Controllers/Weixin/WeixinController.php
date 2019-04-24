@@ -57,21 +57,21 @@ class WeixinController extends Controller
             }
         }else if($content=='最新商品'){
             $v = DB::table('shop_goods')->orderBy('create_time','desc')->first();
-             echo  "<xml>
-               <ToUserName><![CDATA['.$openid.']]></ToUserName>
-               <FromUserName><![CDATA['.$wxid.']]></FromUserName>
-               <CreateTime>'.time().'</CreateTime>
-               <MsgType><![CDATA[news]]></MsgType>
-               <ArticleCount>1</ArticleCount>
-               <Articles>
-                                <item>
-                       <Title><![CDATA['.$v->goods_name.']]></Title>
-                       <Description><![CDATA['.$v->goods_desc.']]></Description>
-                       <PicUrl><![CDATA['.'http://1809gaoxiangdong.comcto.com/img/12.jpg'.']]></PicUrl>
-                       <Url><![CDATA['.'http://1809gaoxiangdong.comcto.com/Goods/detail/?goods_id='.$v->goods_id.']]></Url>
-                        </item>
-                        </Articles>
-                </xml>";
+             echo  '<xml>
+                          <ToUserName><![CDATA['.$openid.']]></ToUserName>
+                          <FromUserName><![CDATA['.$wxid.']]></FromUserName>
+                          <CreateTime>.time().</CreateTime>
+                          <MsgType><![CDATA[news]]></MsgType>
+                          <ArticleCount>1</ArticleCount>
+                          <Articles>
+                            <item>
+                              <Title><![CDATA['.$v->goods_name.']]></Title>
+                              <Description><![CDATA['.$v->goods_desc.']]></Description>
+                              <PicUrl><![CDATA['.'http://1809liyijie.comcto.com/img/12.jpg'.']]></PicUrl>
+                              <Url><![CDATA['.'http://1809gaoxiangdong.comcto.com/Goods/detail?goods_id='.$v->goods_id.']]></Url>
+                            </item>
+                          </Articles>
+                        </xml>';
         }
     }
     //获取微信用户信息
