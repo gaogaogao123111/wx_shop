@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\Redis;
 use App\Model\Weixin\Weixin;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 class WeixinController extends Controller
 {
 
@@ -73,6 +72,28 @@ class WeixinController extends Controller
                           </Articles>
                         </xml>';
         }
+
+
+        $noncestr = Str::random(10); //随机
+        $ticket = sdkticket(); //获取微信
+        $timestamp = time(); //当前时间
+        $current_url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] .$_SERVER['REQUEST_URI'];
+//        echo 'nonceStr: '.$nonceStr;echo '</br>';
+//        echo 'ticket: '.$ticket;echo '</br>';
+//        echo '$timestamp: '.$timetamp;echo '</br>';
+//        echo '$current_url: '.$current_url;echo '</br>';die;
+        $string = "jsapi_ticket=$ticket&noncestr=$noncestr&timestamp=$timestamp&url=$current_url";
+        $string = sha1($string);
+        $jsconfig = [
+            'appId' => env('WX_APPID'), //公众号ID
+            'timestamp' => $timestamp,
+            'nonceStr' => $noncestr,   //随机字符串
+            'signature' => $string,    //签名
+        ];
+        $data = [
+            'jsconfig'  => $jsconfig
+        ];
+        return view('Goods.goodsdetail',$data);
     }
     //获取微信用户信息
     public function getuser($openid){

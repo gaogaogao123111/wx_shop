@@ -27,7 +27,7 @@ class SdkController extends Controller
         $data = [
             'jsconfigsdk'  => $jsconfigsdk
         ];
-        return view('Goods.goodsdetail',$data);
+        return view('Sdk.sdk',$data);
 
     }
 
