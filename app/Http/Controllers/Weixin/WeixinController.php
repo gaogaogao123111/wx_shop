@@ -67,7 +67,7 @@ class WeixinController extends Controller
                                 <item>
                        <Title><![CDATA['.$v->goods_name.']]></Title>
                        <Description><![CDATA['.$v->goods_desc.']]></Description>
-                       <PicUrl><![CDATA['.'http://shop.comcto.com/img/12.jpg'.']]></PicUrl>
+                       <PicUrl><![CDATA['.'http://1809gaoxiangdong.comcto.com/img/12.jpg'.']]></PicUrl>
                        <Url><![CDATA['.'http://1809gaoxiangdong.comcto.com/Goods/detail/'.$v->goods_id.']]></Url>
                         </item>
                         </Articles>
