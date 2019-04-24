@@ -59,7 +59,7 @@ class WeixinController extends Controller
             $v = DB::table('shop_goods')->orderBy('create_time','desc')->first();
              echo  "<xml>
                <ToUserName><![CDATA['.$openid.']]></ToUserName>
-               <FromUserName><!['.CDATA['.$wxid.']]></FromUserName>
+               <FromUserName><![CDATA['.$wxid.']]></FromUserName>
                <CreateTime>'.time().'</CreateTime>
                <MsgType><![CDATA[news]]></MsgType>
                <ArticleCount>1</ArticleCount>
