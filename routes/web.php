@@ -38,3 +38,7 @@ Route::get('/Sdk/img', 'SdkController@img');
 Route::get('Weixin/valid','Weixin\WeixinController@valid');
 Route::any('Weixin/valid','Weixin\WeixinController@event');
 
+
+//计划
+Route::get('/Crontab/crontab','CrontabController@crontab');//删除过去订单
+

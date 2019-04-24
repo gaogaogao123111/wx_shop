@@ -92,14 +92,14 @@
             timestamp: "{{$jsconfig['timestamp']}}", // 必填，生成签名的时间戳
             nonceStr: "{{$jsconfig['nonceStr']}}", // 必填，生成签名的随机串
             signature: "{{$jsconfig['signature']}}",// 必填，签名
-            jsApiList: ['chooseImage','uploadImage'] // 必填，需要使用的JS接口列表
+            jsApiList: ['chooseImage','uploadImage','updateAppMessageShareData'] // 必填，需要使用的JS接口列表
         });
         wx.ready(function () {   //需在用户可能点击分享按钮前就先调用
             wx.updateAppMessageShareData({
                 title: '最新', // 分享标题
                 desc: '详情', // 分享描述
-                link: '', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                imgUrl: '', // 分享图标
+                link: 'http://shop.comcto.com/Sdk/img', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: 'http://1809gaoxiangdong.comcto.com/uploads/goodsImg/20190220/3a7b8dea4c6c14b2aa0990a2a2f0388e.jpg', // 分享图标
                 success: function (res) {
                     console.log(res);
                 }
