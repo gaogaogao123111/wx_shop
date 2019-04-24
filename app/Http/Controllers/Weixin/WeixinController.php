@@ -118,6 +118,7 @@ class WeixinController extends Controller
         $urll = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token.'&openid='.$openid.'&lang=zh_CN';
         $response_user = json_decode(file_get_contents($urll),true);
         $res =Weixin::where(['openid'=>$response_user['openid']])->first();
+        var_dump($res);die;
         if($res){
             echo "回来啦";
         }else{
