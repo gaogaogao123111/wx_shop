@@ -49,10 +49,12 @@ class GoodsdetailController extends Controller
             ];
             $b[]=Goods::where($where)->first();
         }
+
         $data = [
           'list'=>$list,
           'viewa'=>$viewa,
         ];
+
         return view('Goods/goodsdetail',$data,compact('a','b'));
 
     }
@@ -66,7 +68,6 @@ class GoodsdetailController extends Controller
         $list2 = Redis::zRevRange($key,0,10000,true);
         echo "<pre>";print_r($list2);echo "</pre>";
     }
-
 
 
 }

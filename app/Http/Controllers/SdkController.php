@@ -34,5 +34,7 @@ class SdkController extends Controller
     public function img()
     {
         echo '<pre>';print_r($_GET);echo '</pre>';
+//        $content = file_get_contents("php://input");
+//        var_dump($content);
     }
 }

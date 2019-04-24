@@ -42,6 +42,7 @@
                         img +=v+',';
                         var node = "#imgs"+i;
                         $(node).attr('src',v);
+
                         console.log(node);
                         //上传图片接口
                         wx.uploadImage({
@@ -49,18 +50,21 @@
                             isShowProgressTips: 1, // 默认为1，显示进度提示
                             success: function (msg) {
                                 var serverId = msg.serverId; // 返回图片的服务器端ID
-                                alert('aid:::::'+serverId);
+                                // alert('aid:::::'+serverId);
                                 // console.log(serverId);
+
                             }
                         });
                         wx.downloadImage({
-                            serverId: v, // 需要下载的图片的服务器端ID，由uploadImage接口获得
+                            serverId: serverId, // 需要下载的图片的服务器端ID，由uploadImage接口获得
                             isShowProgressTips: 1, // 默认为1，显示进度提示
                             success: function (arr) {
                                 var localId = arr.localId; // 返回图片下载后的本地ID
-                                alert('bid:::::'+serverId);
+                                alert('bid:::::'+localId);
+
                             }
                         });
+
                     })
 
 
@@ -69,10 +73,10 @@
                         url : '/Sdk/img?img='+img,     //将上传的照片id发送给后端
                         type: 'get',
                         success:function(d){
-                            // console.log(d);
+                            console.log(d);
                         }
                     });
-                    // console.log(img);
+                    console.log(img);
                 }
             });
         });
