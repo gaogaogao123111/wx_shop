@@ -129,7 +129,7 @@ class WeixinController extends Controller
                 'nickname' => $response_user['nickname'],
                 'sex' => $response_user['sex'],
                 'headimgurl' => $response_user['headimgurl'],
-                'subscribe_time' => $response_user['subscribe_time']
+                'subscribe_time' => time()
             ];
             Weixin::insertGetId($aa_info);
             echo "你好你好你好";
