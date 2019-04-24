@@ -58,8 +58,8 @@ class WeixinController extends Controller
         }else if($content=='最新商品'){
             $v = DB::table('shop_goods')->orderBy('create_time','desc')->first();
              echo  "<xml>
-               <ToUserName><![CDATA['.$wxid.']]></ToUserName>
-               <FromUserName><!['.CDATA[$openid.']]></FromUserName>
+               <ToUserName><![CDATA['.$openid.']]></ToUserName>
+               <FromUserName><!['.CDATA['.$wxid.']]></FromUserName>
                <CreateTime>'.time().'</CreateTime>
                <MsgType><![CDATA[news]]></MsgType>
                <ArticleCount>1</ArticleCount>
