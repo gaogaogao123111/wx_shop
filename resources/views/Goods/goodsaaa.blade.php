@@ -23,7 +23,7 @@
         wx.updateAppMessageShareData({
             title: '最新', // 分享标题
             desc: '详情', // 分享描述
-            link: 'http://shop.comcto.com/Sdk/img', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            link: 'http://1809gaoxiangdong.comcto.com/Sdk/img', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: 'http://1809gaoxiangdong.comcto.com/uploads/goodsImg/20190220/3a7b8dea4c6c14b2aa0990a2a2f0388e.jpg', // 分享图标
             success: function (res) {
                 console.log(res);
