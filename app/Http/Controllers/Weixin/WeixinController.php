@@ -57,7 +57,7 @@ class WeixinController extends Controller
             }
         }else if($content=='最新商品'){
             $v = DB::table('shop_goods')->orderBy('create_time','desc')->first();
-             $xmlTpl = "<xml>
+             echo  "<xml>
                <ToUserName><![CDATA['.$wxid.']]></ToUserName>
                <FromUserName><!['.CDATA[$openid.']]></FromUserName>
                <CreateTime>'.time().'</CreateTime>
@@ -72,7 +72,6 @@ class WeixinController extends Controller
                         </item>
                         </Articles>
                 </xml>";
-        echo $xmlTpl;
         }
     }
     //获取微信用户信息
