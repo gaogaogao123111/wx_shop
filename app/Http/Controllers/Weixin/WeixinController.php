@@ -21,7 +21,7 @@ class WeixinController extends Controller
         $ticket = sdkticket(); //获取微信
         $timestamp = time(); //当前时间
         $current_url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] .$_SERVER['REQUEST_URI'];
-        $string = "jsapi_ticket=$ticket&noncestr=$noncestr&timestamp=$timestamp&url=$current_url";
+        $string = "jsapi_ticket=$ticket&noncestr=$nonceStr&timestamp=$timestamp&url=$current_url";
         $string = sha1($string);
         $jsconfig = [
             'appId' => env('WX_APPID'), //公众号ID
