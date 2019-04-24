@@ -118,10 +118,8 @@ class WeixinController extends Controller
         $urll = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token.'&openid='.$openid.'&lang=zh_CN';
         $response_user = json_decode(file_get_contents($urll),true);
         $res =Weixin::where(['openid'=>$response_user['openid']])->first();
-        var_dump($res);die;
-        if($res){
-            echo "回来啦";
-        }else{
+//        var_dump($res);die;
+        if($res==NULL){
             $aa_info = [
                 'openid' => $response_user['openid'],
                 'nickname' => $response_user['nickname'],
@@ -131,6 +129,9 @@ class WeixinController extends Controller
             ];
             Weixin::insertGetId($aa_info);
             echo "你好你好你好";
+        }else{
+            echo "回来啦";
+
         }
 
     }
