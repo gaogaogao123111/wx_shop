@@ -29,7 +29,7 @@ class WeixinController extends Controller
             'nonceStr' => $nonceStr,   //随机字符串
             'signature' => $string,    //签名
         ];
-        $data = [
+        $da = [
             'jsconfig'  => $jsconfig
         ];
         $content = file_get_contents("php://input");
@@ -84,7 +84,7 @@ class WeixinController extends Controller
                           </Articles>
                         </xml>';
         }
-        return view('Goods.goodsaaa',$data);
+        return view('Goods.goodsaaa',$da);
 
 
     }
