@@ -85,7 +85,7 @@ class WeixinController extends Controller
         $da = [
             'jsconfig'  => $jsconfig
         ];
-        return view('Goods.goodsaaa',$da);
+        return view('Goods/goodsaaa',$da);
 
 
     }
@@ -95,5 +95,18 @@ class WeixinController extends Controller
         $data = file_get_contents($url);
         $aa = json_decode($data,true);
         return  $aa;
+    }
+
+
+
+
+
+
+
+
+
+    //微信网页授权
+    public function code(){
+        echo "<pre>";print_r($_GET);echo "</pre>";
     }
 }
