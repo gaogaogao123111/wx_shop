@@ -21,8 +21,8 @@ class GoodsdetailController extends Controller
         }
 
         //商品点击刷新加1
-        $key='paihang';
-        $viewa = Redis::incr($key,$goods_id);
+        $key='paihang'.$goods_id;
+        $viewa = Redis::incr($key);
 
         //排行
         $key ='ss:goods:view';
