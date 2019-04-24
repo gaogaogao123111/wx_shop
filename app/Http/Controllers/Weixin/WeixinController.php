@@ -17,18 +17,6 @@ class WeixinController extends Controller
     //接收微信推送 post
     public function event()
     {
-        $nonceStr = Str::random(10); //随机
-        $ticket = sdkticket(); //获取微信
-        $timestamp = time(); //当前时间
-        $current_url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] .$_SERVER['REQUEST_URI'];
-        $string = "jsapi_ticket=$ticket&noncestr=$nonceStr&timestamp=$timestamp&url=$current_url";
-        $string = sha1($string);
-        $jsconfig = [
-            'appId' => env('WX_APPID'), //公众号ID
-            'timestamp' => $timestamp,
-            'nonceStr' => $nonceStr,   //随机字符串
-            'signature' => $string,    //签名
-        ];
         $content = file_get_contents("php://input");
         $time = date('Y-m-d H:i:s');
         $str = $time . $content . "\n";
@@ -37,10 +25,7 @@ class WeixinController extends Controller
         $openid = $data->FromUserName;   //用户openid
         $wxid = $data->ToUserName;    //公总号id
         $event = $data->Event;
-        $msgtype = $data->MsgType;      //消息类型
-        $content = $data->Content;
-        $value = '';
-        $client = new Client();
+        $content = $data->Content;//消息
         //扫码关注
         if ($event == 'subscribe') {
             //根据openid判断用户是否已存在
@@ -84,11 +69,7 @@ class WeixinController extends Controller
                           </Articles>
                         </xml>';
         }
-
-        $data = [
-            'jsconfig'  => $jsconfig
-        ];
-        return view('Goods.goodsdetail',$data);
+        
     }
     //获取微信用户信息
     public function getuser($openid){

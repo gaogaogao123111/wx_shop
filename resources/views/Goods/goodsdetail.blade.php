@@ -97,9 +97,9 @@
         wx.ready(function () {   //需在用户可能点击分享按钮前就先调用
             wx.updateAppMessageShareData({
                 title: '最新', // 分享标题
-                desc: '1', // 分享描述
-                link: '1809gaoxiangdong.comcto.com', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                imgUrl: '@', // 分享图标
+                desc: '详情', // 分享描述
+                link: '', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: '', // 分享图标
                 success: function (res) {
                     console.log(res);
                 }
