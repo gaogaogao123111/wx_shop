@@ -30,15 +30,14 @@ Route::get('/Weixin/notify', 'Weixin\WxPayController@notify');      //支付通�
 Route::get('/Weixin/paysuccess', 'Weixin\WxPayController@paysuccess');      //支付成功
 Route::get('/Goods/detail/{goods_id?}', 'GoodsdetailController@detail');//商品详情   排行
 Route::get('/Goods/getsort', 'GoodsdetailController@getsort');//排行实例
-Route::get('/Goods/cachegoods/{goods_id?}', 'GoodsdetailController@cachegoods');
 //sdk
 Route::get('/Sdk/sdk', 'SdkController@sdk');
 Route::get('/Sdk/img', 'SdkController@img');
+//计划
+Route::get('/Crontab/crontab','CrontabController@crontab');//删除过去订单
 //回复
 Route::get('Weixin/valid','Weixin\WeixinController@valid');
 Route::any('Weixin/valid','Weixin\WeixinController@event');
-//计划
-Route::get('/Crontab/crontab','CrontabController@crontab');//删除过去订单
 //网页授权
 Route::get('Weixin/code','Weixin\WeixinController@code');
 
