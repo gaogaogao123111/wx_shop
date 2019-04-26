@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    awx_shopLaravel
+                    wx_shopLaravel
                 </div>
 
                 <div class="links">
