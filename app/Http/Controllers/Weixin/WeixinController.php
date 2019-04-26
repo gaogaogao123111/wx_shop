@@ -17,18 +17,18 @@ class WeixinController extends Controller
     //接收微信推送 post
     public function event()
     {
-        $nonceStr = Str::random(10); //随机
-        $ticket = sdkticket(); //获取微信
-        $timestamp = time(); //当前时间
-        $current_url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] .$_SERVER['REQUEST_URI'];
-        $string = "jsapi_ticket=$ticket&noncestr=$nonceStr&timestamp=$timestamp&url=$current_url";
-        $string = sha1($string);
-        $jsconfig = [
-            'appId' => env('WX_APPID'), //公众号ID
-            'timestamp' => $timestamp,
-            'nonceStr' => $nonceStr,   //随机字符串
-            'signature' => $string,    //签名
-        ];
+//        $nonceStr = Str::random(10); //随机
+//        $ticket = sdkticket(); //获取微信
+//        $timestamp = time(); //当前时间
+//        $current_url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] .$_SERVER['REQUEST_URI'];
+//        $string = "jsapi_ticket=$ticket&noncestr=$nonceStr&timestamp=$timestamp&url=$current_url";
+//        $string = sha1($string);
+//        $jsconfig = [
+//            'appId' => env('WX_APPID'), //公众号ID
+//            'timestamp' => $timestamp,
+//            'nonceStr' => $nonceStr,   //随机字符串
+//            'signature' => $string,    //签名
+//        ];
         //回复
         $content = file_get_contents("php://input");
         $time = date('Y-m-d H:i:s');
@@ -45,14 +45,12 @@ class WeixinController extends Controller
             $localuser = Weixin::where(['openid' => $openid])->first();
             if ($localuser) {
                 //用户关注过
-                echo '<xml><ToUserName><![CDATA[' . $openid . ']]></ToUserName><FromUserName><![CDATA[' . $wxid . ']]></FromUserName><CreateTime>' . time() . '</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[' . '欢迎回来 ' . $localuser['nickname'] . ']]></Content></xml>';
+                echo '<xml><ToUserName><![CDATA[' . $openid . ']]></ToUserName><FromUserName><![CDATA['.$wxid.']]></FromUserName><CreateTime>' . time() . '</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[' . '欢迎回来 ' . $localuser['nickname'] . ']]></Content></xml>';
             } else {
                 //用户关注aa
                 //获取用户信息
                 $aa = $this->getuser($openid);
-                echo '<pre>';
-                print_r($aa);
-                echo '</pre>';
+                echo '<pre>';print_r($aa);echo '</pre>';
                 //用户信息入户
                 $aa_info = [
                     'openid' => $aa['openid'],
@@ -80,7 +78,7 @@ class WeixinController extends Controller
                               <Url><![CDATA['.'http://1809gaoxiangdong.comcto.com/Goods/detail/'.$v->goods_id.']]></Url>
                             </item>
                           </Articles>
-                        </xml>';
+                     </xml>';
         }
 //        $da = [
 //            'jsconfig'  => $jsconfig
