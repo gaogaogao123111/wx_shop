@@ -33,7 +33,7 @@ class WeixinController extends Controller
         $content = file_get_contents("php://input");
         $time = date('Y-m-d H:i:s');
         $str = $time . $content . "\n";
-        file_put_contents("logs/liu_lan.log.log", $str, FILE_APPEND);
+        file_put_contents("logs/liu_lan.log", $str, FILE_APPEND);
         $data = simplexml_load_string($content);
         $openid = $data->FromUserName;   //用户openid
         $wxid = $data->ToUserName;    //公总号id
