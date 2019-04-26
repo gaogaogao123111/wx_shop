@@ -17,19 +17,19 @@ class WeixinController extends Controller
     //接收微信推送 post
     public function event()
     {
-        $nonceStr = Str::random(10); //随机
-        $ticket = sdkticket(); //获取微信
-        $timestamp = time(); //当前时间
-        $current_url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] .$_SERVER['REQUEST_URI'];
-        $string = "jsapi_ticket=$ticket&noncestr=$nonceStr&timestamp=$timestamp&url=$current_url";
-        $string = sha1($string);
-        $jsconfig = [
-            'appId' => env('WX_APPID'), //公众号ID
-            'timestamp' => $timestamp,
-            'nonceStr' => $nonceStr,   //随机字符串
-            'signature' => $string,    //签名
-        ];
-        //回复
+//        $nonceStr = Str::random(10); //随机
+//        $ticket = sdkticket(); //获取微信
+//        $timestamp = time(); //当前时间
+//        $current_url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] .$_SERVER['REQUEST_URI'];
+//        $string = "jsapi_ticket=$ticket&noncestr=$nonceStr&timestamp=$timestamp&url=$current_url";
+//        $string = sha1($string);
+//        $jsconfig = [
+//            'appId' => env('WX_APPID'), //公众号ID
+//            'timestamp' => $timestamp,
+//            'nonceStr' => $nonceStr,   //随机字符串
+//            'signature' => $string,    //签名
+//        ];
+//        //回复
         $content = file_get_contents("php://input");
         $time = date('Y-m-d H:i:s');
         $str = $time . $content . "\n";
@@ -82,10 +82,10 @@ class WeixinController extends Controller
                           </Articles>
                         </xml>';
         }
-        $da = [
-            'jsconfig'  => $jsconfig
-        ];
-        return view('Goods/goodsaaa',$da);
+//        $da = [
+//            'jsconfig'  => $jsconfig
+//        ];
+//        return view('Goods/goodsaaa',$da);
 
 
     }
